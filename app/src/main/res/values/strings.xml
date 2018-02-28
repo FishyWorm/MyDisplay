@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">My Display</string>
+    <string name="title_activity_main">My Display</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="fav_frag_title_text">My Favorites</string>
+</resources>
