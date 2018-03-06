@@ -19,7 +19,7 @@ import layout.FavoritesFragment;
 //import android.app.FragmentManager;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, FavoritesFragment.OnFragmentInteractionListener{
+        implements NavigationView.OnNavigationItemSelectedListener, FavoritesFragment.OnFragmentInteractionListener, MainFragment.OnFragmentInteractionListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +34,10 @@ public class MainActivity extends AppCompatActivity
                         .setAction("Action", null).show();
             }
         });*/
+
+        getSupportFragmentManager().beginTransaction()
+                .add(R.id.fragmentContainer, new MainFragment(), "main")
+                .commit();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -102,7 +106,7 @@ public class MainActivity extends AppCompatActivity
             android.support.v4.app.Fragment favFrag = new FavoritesFragment();
             android.support.v4.app.FragmentManager frgMgr = getSupportFragmentManager();
 
-            frgMgr.beginTransaction().replace(R.id.layout_view, favFrag).commit();
+            frgMgr.beginTransaction().replace(R.id.fragmentContainer, favFrag).commit();
 
 
             // Go to favorites fragment
