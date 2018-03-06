@@ -9,4 +9,9 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="fav_frag_title_text">My Favorites</string>
+    <string name="db_main_name">mydisplay-2e780</string>
+    <string name="db_cocktails_name">cocktails</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
