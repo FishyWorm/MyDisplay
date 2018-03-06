@@ -1,6 +1,8 @@
 package com.example.fish.mydisplay;
 
-import android.net.Uri;
+import android.support.v4.app.FragmentManager;
+//import android.app.Fragment;
+//import android.app.FragmentManager;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -11,21 +13,16 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.google.firebase.FirebaseApp;
-
 import layout.FavoritesFragment;
 
-//import android.app.Fragment;
-//import android.app.FragmentManager;
-
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, FavoritesFragment.OnFragmentInteractionListener{
+        implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        FirebaseApp.initializeApp(getApplicationContext());
+
         /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,7 +42,36 @@ public class MainActivity extends AppCompatActivity
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
+
+        //navigationView.setNavigationItemSelectedListener(this);
+        navigationView.setNavigationItemSelectedListener(
+                new NavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(MenuItem menuItem) {
+                            // set item as selected to persist highlight
+                            menuItem.setChecked(true);
+                            // close drawer when item is tapped
+                            drawer.closeDrawers();
+
+                            // Add code here to update the UI based on the item selected
+                            // For example, swap UI fragments here
+                            int id = menuItem.getItemId();
+                            android.support.v4.app.Fragment favFrag = new FavoritesFragment();
+                        android.support.v4.app.FragmentManager frgMgr = getSupportFragmentManager();
+                        FragmentManager mgr = getSupportFragmentManager();
+
+                        frgMgr.beginTransaction().replace(R.id.layout_view, favFrag).commit();
+
+                        /*frgMgr.beginTransaction().replace(
+                                R.id.relativelayoutforfragment,
+                                favFrag,
+                                favFrag.getTag()
+                        ).commit();*/
+
+                        return true;
+                    }
+                }
+        );
 
     }
 
@@ -87,22 +113,12 @@ public class MainActivity extends AppCompatActivity
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
-    public boolean onNavigationItemSelected(MenuItem menuItem) {
+    public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
-        int id = menuItem.getItemId();
+        int id = item.getItemId();
 
         if (id == R.id.nav_favorites) {
 
-            // set item as selected to persist highlight
-            menuItem.setChecked(true);
-
-            // Add code here to update the UI based on the item selected
-            // For example, swap UI fragments here
-            int menuItemId = menuItem.getItemId();
-            android.support.v4.app.Fragment favFrag = new FavoritesFragment();
-            android.support.v4.app.FragmentManager frgMgr = getSupportFragmentManager();
-
-            frgMgr.beginTransaction().replace(R.id.layout_view, favFrag).commit();
 
 
             // Go to favorites fragment
@@ -117,15 +133,5 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
-    }
-
-    @Override
-    public void onFragmentInteraction(Uri uri) {
-
-    }
-
-    @Override
-    public void onPointerCaptureChanged(boolean hasCapture) {
-
     }
 }
