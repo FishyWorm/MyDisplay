@@ -8,24 +8,31 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.FirebaseApp;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 
+import java.util.HashMap;
+
+import custom.Cocktail;
 import layout.FavoritesFragment;
 
 //import android.app.Fragment;
 //import android.app.FragmentManager;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, FavoritesFragment.OnFragmentInteractionListener, MainFragment.OnFragmentInteractionListener{
+        implements NavigationView.OnNavigationItemSelectedListener, FavoritesFragment.OnFragmentInteractionListener, MainFragment.OnFragmentInteractionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        FirebaseApp.initializeApp(getApplicationContext());
         /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -34,6 +41,8 @@ public class MainActivity extends AppCompatActivity
                         .setAction("Action", null).show();
             }
         });*/
+
+        loadCocktails();
 
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.fragmentContainer, new MainFragment(), "main")
@@ -51,6 +60,43 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+    }
+
+    private void loadCocktails() {
+        final String TAG = "cocktailsGet";
+        FirebaseApp.initializeApp(this);
+        final FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection(getString(R.string.db_cocktails_name))
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+
+                    public void onSuccess(QuerySnapshot documentSnapshots) {
+
+                        try {
+
+                            for (DocumentSnapshot document : documentSnapshots.getDocuments()) {
+
+                                String id = document.getId();
+                                String name = document.getString("name");
+                                boolean alcoholic = false;
+                                HashMap<String, String> recipeMap = new HashMap<>();
+                                if (document.contains("alcoholic")) {
+                                    alcoholic = document.getBoolean("alcoholic");
+                                }
+                                if (document.contains("recipe")) {
+                                    recipeMap = (HashMap<String, String>) document.get("recipe");
+                                }
+
+                                Cocktail cocktail = new Cocktail(id, name, recipeMap, alcoholic);
+
+
+                                Log.i(TAG, "document " + document.getId() + ": " + document.getData().toString());
+                            }
+                        } catch (Exception e) {
+                            e.getMessage();
+                        }
+                    }
+                });
     }
 
     @Override
@@ -81,9 +127,6 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.action_settings) {
             return true;
         }
-
-
-
 
 
         return super.onOptionsItemSelected(item);
