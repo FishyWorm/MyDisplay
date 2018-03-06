@@ -1,0 +1,50 @@
+{
+	"cocktails": {
+		"c_00000001": {
+			"id": "c_00000001",
+			"name": "Alexander",
+			"ingredients": {
+				"Cognac": "3 cl",
+				"Créme de Cacao (brown)": "3 cl",
+				"Fresh Cream": "3 cl"
+			},
+			"preperation": "Shake and strain into a chilled cocktail glass. Sprinkle with fresh ground nutmeg."
+		},
+		"c_00000002": {
+			"id": "c_00000002",
+			"name": "Americano",
+			"ingredients": {
+				"Campari": "3 cl",
+				"Red Vermouth": "3 cl",
+				"Soda Water": "a splash"
+			},
+			"preperation": "Mix the ingredients directly in an old-fashioned glass filled with ice-cubes, add a splash of soda water and garnish with half orange slice."
+		},
+		"Angel Face": {},
+		"Bacardi": {},
+		"Between the Sheets": {},
+		"Casino": {},
+		"Clover Club"
+		"Daiquiri"
+		"Derby"
+		"Dry Martini"
+		"Gin Fizz"
+		"John Collins"
+		"Manhattan"
+		"Mary Pickford"
+		"Monkey Gland"
+		"Negroni"
+		"Old Fashioned"
+		"Paradise"
+		"Planter's Punch"
+		"Porto Flip"
+		"Ramos Gin Fizz"
+		"Rusty Nail"
+		"Sazerac"
+		"Screwdriver"
+		"Sidecar"
+		"Stinger"
+		"Tuxedo"
+		"Whiskey Sour"
+	}
+}

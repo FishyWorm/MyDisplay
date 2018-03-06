@@ -1,0 +1,121 @@
+{
+	"cocktails": {
+		"c_00000001": {
+			"id": "c_00000001",
+			"name": "Alexander",
+			"ingredients": {
+				"i_00000001": "3",
+				"i_00000002": "3",
+				"i_00000003": "3"
+			},
+			"preperation": "Shake and strain into a chilled cocktail glass. Sprinkle with fresh ground nutmeg."
+		},
+		"c_00000002": {
+			"id": "c_00000002",
+			"name": "Americano",
+			"ingredients": {
+				"i_00000004": "3",
+				"i_00000005": "3",
+				"i_00000006": "a splash"
+			},
+			"preperation": "Mix the ingredients directly in an old-fashioned glass filled with ice-cubes, add a splash of soda water and garnish with half orange slice."
+		},
+		"c_00000003": {
+			"id": "c_00000003",
+			"name": "Angel Face",
+			"ingredients": {
+				"i_00000007": "3",
+				"i_00000008": "3",
+				"i_00000009": "a splash"
+			},
+			"preperation": "Mix the ingredients directly in an old-fashioned glass filled with ice-cubes, add a splash of soda water and garnish with half orange slice."
+		},
+		"c_00000004": {
+			"id": "c_00000004",
+			"name": "Aviation",
+			"ingredients": {
+				"i_0000000a": "3",
+				"i_0000000b": "3",
+				"i_0000000c": "a splash"
+			},
+			"preperation": "Mix the ingredients directly in an old-fashioned glass filled with ice-cubes, add a splash of soda water and garnish with half orange slice."
+		},
+		"c_00000005": {
+			"id": "c_00000005",
+			"name": "Bacardi",
+			"ingredients": {
+				"i_00000001": "3",
+				"i_00000006": "3",
+				"i_0000000d": "a splash"
+			},
+			"preperation": "Mix the ingredients directly in an old-fashioned glass filled with ice-cubes, add a splash of soda water and garnish with half orange slice."
+		}
+	},
+	"ingredients": {
+		"i_00000001": {
+			"id": "i_00000001",
+			"name": "Cognac",
+			"alcoholic": true
+		},
+		"i_00000002": {
+			"id": "i_00000002",
+			"name": "Créme de Cacao",
+			"alcoholic": true
+		},
+		"i_00000003": {
+			"id": "i_00000003",
+			"name": "Fresh Cream",
+			"alcoholic": false
+		},
+		"i_00000004": {
+			"id": "i_00000004",
+			"name": "Campari",
+			"alcoholic": true
+		},
+		"i_00000005": {
+			"id": "i_00000005",
+			"name": "Red Vermouth",
+			"alcoholic": true
+		},
+		"i_00000006": {
+			"id": "i_00000006",
+			"name": "Soda Water",
+			"alcoholic": false
+		},
+		"i_00000007": {
+			"id": "i_00000007",
+			"name": "Calvados",
+			"alcoholic": true
+		},
+		"i_00000008": {
+			"id": "i_00000008",
+			"name": "Gin",
+			"alcoholic": true
+		},
+		"i_00000009": {
+			"id": "i_00000009",
+			"name": "Maraschino",
+			"alcoholic": true
+		},
+		"i_0000000a": {
+			"id": "i_0000000a",
+			"name": "Lemon Juice",
+			"alcoholic": false
+		},
+		"i_0000000b": {
+			"id": "i_0000000b",
+			"name": "Bacardi Carta Blanca",
+			"alcoholic": false
+		},
+		"i_0000000c": {
+			"id": "i_0000000c",
+			"name": "Lime Juice",
+			"alcoholic": false
+		},
+		"i_0000000d": {
+			"id": "i_0000000d",
+			"name": "Grenadine",
+			"alcoholic": false
+		}
+	}
+}
